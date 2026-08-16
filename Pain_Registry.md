@@ -2,7 +2,7 @@
 
 Ten complaints about Sarvam, mined from developer writeups, GitHub, model hubs, app stores, forums and analyst notes. Each carries a real source with a date, and a score.
 
-**Important:** this registry was built from evidence dated **March–April 2026**, and several of these pains have since been fixed. I've kept them in with their status marked rather than deleting them, because the pattern of what got fixed and how fast is itself informative — and because deleting them would hide the fact that my own first pass was built on stale criticism. [Corrections.md](Corrections.md) has the full account.
+**Important:** this registry was built from evidence dated **March–April 2026**, and several of these pains have since been fixed. I've kept them in with their status marked rather than deleting them, because the pattern of what got fixed and how fast is itself informative, and because deleting them would hide the fact that my own first pass was built on stale criticism. [Corrections.md](Corrections.md) has the full account.
 
 Status re-checked **16 August 2026**.
 
@@ -14,7 +14,7 @@ Status re-checked **16 August 2026**.
 Opportunity Score = (frequency × severity × business impact) ÷ 30
 ```
 
-Frequency is 1 for isolated, 2 for recurring, 3 for pervasive — where pervasive means independently corroborated across at least three sources. Severity and business impact are 1–10, judged by me. Maximum raw score is 300, divided by 30 to land on a 0–10 scale.
+Frequency is 1 for isolated, 2 for recurring, 3 for pervasive, where pervasive means independently corroborated across at least three sources. Severity and business impact are 1–10, judged by me. Maximum raw score is 300, divided by 30 to land on a 0–10 scale.
 
 The scoring is a sorting aid, not a measurement. It encodes my judgement about severity and impact, and someone inside the company with real usage data would score several of these differently.
 
@@ -25,7 +25,7 @@ The scoring is a sorting aid, not a measurement. It encodes my judgement about s
 ### P01 — Open-weight models had no mainstream local runtime
 **Score 7.2** · pervasive · severity 8 · impact 9 · **mostly fixed**
 
-The complaint, as of March 2026: no merged Ollama or llama.cpp support, no GGUF for the 30B or 105B. Users on the Ollama PR thread asked repeatedly for a merge timeline — *"Any timeline when will this be merged?"* and *"We need sarvam models through Ollama."* CB Insights flagged the same friction: the absence of GGUF formats and the lack of day-one vLLM support [29][32][33][55].
+The complaint, as of March 2026: no merged Ollama or llama.cpp support, no GGUF for the 30B or 105B. Users on the Ollama PR thread asked repeatedly for a merge timeline: *"Any timeline when will this be merged?"* and *"We need sarvam models through Ollama."* CB Insights flagged the same friction: the absence of GGUF formats and the lack of day-one vLLM support [29][32][33][55].
 
 **Where it stands now.** Largely closed, and I got this wrong twice before getting it right. llama.cpp merged native `sarvam_moe` support on 9 May 2026 (PR #20275, release `b9093`) [57][58]. Sarvam ships first-party GGUF and FP8 builds [59]. The residual is Ollama specifically: PR #14703 is still open with merge conflicts and needs Ollama's own Go engine, so the llama.cpp merge doesn't carry over [32].
 
@@ -47,9 +47,9 @@ The from-scratch 30B and 105B were themselves the strategic answer to the "wrapp
 ### P02 — No CPU path, and the air-gapped licence check fails
 **Score 3.7** · recurring · severity 7 · impact 8 · **largely fixed**
 
-Indian enterprise runs substantially on Intel Xeon CPU clusters, but the models were optimised for H100s. Worse, NVIDIA NIM containers validate licences on startup, so they fail in genuinely air-gapped environments — exactly the UIDAI and RBI-style deployments Sarvam markets to [29]. Self-hosting guidance recommended eight high-end GPUs [25].
+Indian enterprise runs substantially on Intel Xeon CPU clusters, but the models were optimised for H100s. Worse, NVIDIA NIM containers validate licences on startup, so they fail in genuinely air-gapped environments, exactly the UIDAI and RBI-style deployments Sarvam markets to [29]. Self-hosting guidance recommended eight high-end GPUs [25].
 
-**Where it stands now.** GGUF plus llama.cpp gives a CPU path with no licence phone-home — omit `-ngl` and it runs on CPU. That sidesteps the NIM problem entirely. The caveat is throughput: the 105B on CPU is memory-bandwidth-bound and impractical, so the 30B with its 2.4B active parameters is the realistic frugal target.
+**Where it stands now.** GGUF plus llama.cpp gives a CPU path with no licence phone-home: omit `-ngl` and it runs on CPU. That sidesteps the NIM problem entirely. The caveat is throughput: the 105B on CPU is memory-bandwidth-bound and impractical, so the 30B with its 2.4B active parameters is the realistic frugal target.
 
 ---
 
@@ -58,7 +58,7 @@ Indian enterprise runs substantially on Intel Xeon CPU clusters, but the models 
 
 A Hacker News user reported confident hallucination and no tool calling [55]. An App Store reviewer noted the app sometimes returns *"xml tags in response, where the response should be … text"*, said it isn't trained on Indian literature, and that it failed basic Excel questions [40].
 
-**Where it stands now.** The API side is fixed — it has native tool calling and strict JSON-schema structured output. The XML leakage in the consumer app is a separate issue, since the app doesn't appear to apply the controls the API already exposes. General model quality is a matter of opinion I'm not equipped to adjudicate.
+**Where it stands now.** The API side is fixed: it has native tool calling and strict JSON-schema structured output. The XML leakage in the consumer app is a separate issue, since the app doesn't appear to apply the controls the API already exposes. General model quality is a matter of opinion I'm not equipped to adjudicate.
 
 ---
 
@@ -98,7 +98,7 @@ Standard uniform quantization is calibrated on English and degrades the embeddin
 
 **Where it stands now.** Open — the only item in the deployment cluster that hasn't been closed. It scores lowest of the ten on my own frequency measure because exactly one source raised it and nobody is complaining about it. It also became the strongest surviving opportunity, which is a tension worth naming rather than hiding: the scoring model rewards things people complain about, and silent quality loss is by definition the thing nobody complains about.
 
-That argument is developed properly in [Opportunities.md](Opportunities.md), and its weak point — nobody asked for this — is scored honestly at 4/10 in [Validation.md](Validation.md).
+That argument is developed properly in [Opportunities.md](Opportunities.md), and its weak point (nobody asked for this) is scored honestly at 4/10 in [Validation.md](Validation.md).
 
 ---
 
@@ -112,7 +112,7 @@ One reviewer: the app "cannot listen to audio longer than 30 seconds" [40]. A ha
 ### P07 — Over-restrictive guardrails on political topics
 **Score 0.8** · isolated · severity 5 · impact 5 · **open**
 
-A reviewer describes the app as "purely diplomatic" — you "cannot criticize or ask any questions related to the Prime Minister, the government" [40].
+A reviewer describes the app as "purely diplomatic": you "cannot criticize or ask any questions related to the Prime Minister, the government" [40].
 
 Single source, and genuinely double-edged given the government relationship. I'm including it because I said I'd log what I found, not because I think it's an opportunity. It's a credibility question for a product sold on sovereignty, and it isn't mine to resolve.
 
@@ -137,7 +137,7 @@ Single source, and genuinely double-edged given the government relationship. I'm
 
 ## What the pattern says
 
-The dominant cluster when I started — P01, P02, P03, P09, P10, all versions of "the open weights are hard to actually run" — has mostly been closed by Sarvam since March 2026. That's the finding, and it's not the one I expected to write.
+The dominant cluster when I started (P01, P02, P03, P09, P10, all versions of "the open weights are hard to actually run") has mostly been closed by Sarvam since March 2026. That's the finding, and it's not the one I expected to write.
 
 What's left is narrower and splits three ways. Indic-safe compression (P03) is the one genuine engineering gap nobody has filled. Consumer app latency (P05, P08) is a separate cluster and untouched. Adoption (P04) isn't a buildable feature at all — it's the outcome the other two move, which is why I treat it as a success metric rather than an opportunity.
 

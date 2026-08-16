@@ -2,7 +2,7 @@
 
 Everything cited across the other files, numbered. Other files reference these as `[12]`.
 
-Two things worth knowing about how to read this list. First, confidence is my judgement of the source, not of the claim: a company press release is HIGH confidence about what the company said and LOW confidence about whether it's the whole picture. Second, funding, pricing and download figures move — where a figure is live I've dated it, and you should assume it has drifted since.
+Two things worth knowing about how to read this list. First, confidence is my judgement of the source, not of the claim: a company press release is HIGH confidence about what the company said and LOW confidence about whether it's the whole picture. Second, funding, pricing and download figures move: where a figure is live I've dated it, and you should assume it has drifted since.
 
 Primary research dates: **7–8 August 2026**. Re-verified: **16 August 2026** (marked ✔ where I re-checked the artifact directly).
 
@@ -31,7 +31,7 @@ Primary research dates: **7–8 August 2026**. Re-verified: **16 August 2026** (
 | 13 | [Tech Times](https://www.techtimes.com/articles/318603/20260618/sarvam-ai-hits-15-billion-valuation-hcltech-bets-150-million-india-sovereign-ai.htm) | India AI startups raised $1.48B in Q1 2026, ~38% of all startup funding | 18 Jun 2026 | MEDIUM |
 | 16 | [Eastern Herald](https://easternherald.com/2026/06/18/sarvam-ai-india-unicorn-hcltech-series-b-funding-2026/) | Voice agents reached ~17M farmers and ~45M insurance policyholders | 18 Jun 2026 | MEDIUM |
 
-**On the Series B specifically.** ✔ Re-checked 16 August. The round is still a first close: $234M banked against a $300M target, with Activate reported as joining the ongoing round. Sarvam's own announcement page is titled "Sarvam raises $300M Series B" while its body describes the $234M first close — if you cite this, cite the body, not the headline.
+**On the Series B specifically.** ✔ Re-checked 16 August. The round is still a first close: $234M banked against a $300M target, with Activate reported as joining the ongoing round. Sarvam's own announcement page is titled "Sarvam raises $300M Series B" while its body describes the $234M first close. If you cite this, cite the body, not the headline.
 
 ---
 
@@ -62,19 +62,19 @@ Primary research dates: **7–8 August 2026**. Re-verified: **16 August 2026** (
 | 25 | [BuildFastWithAI](https://www.buildfastwithai.com/blogs/sarvam-105b-india-s-open-source-llm-for-22-indian-languages-2026) | 105B trained from scratch on 12T tokens, Apache 2.0; self-hosting guidance suggests `tensor_parallel_size=8` | 9 Mar 2026 | MEDIUM |
 | 38 | [TechCrunch](https://techcrunch.com/?p=3093889) | 30B: 32K context, ~16T tokens pretraining; 105B: 128K context | ~Feb 2026 | HIGH |
 | 29 | [mtrajan — "Open is not sovereign"](https://mtrajan.substack.com/p/sarvam-open-is-not-sovereign) | The original teardown: routing/deployment gap, no CPU path, NIM licence validation fails air-gapped, no public Indic-calibrated quantization. Also did the conversion work and published `mtrajan/sarvam-30b-GGUF` | 9 Mar 2026 | MEDIUM |
-| 56 | [NVIDIA NeMo Megatron-Bridge docs](https://docs.nvidia.com/nemo/megatron-bridge/nightly/apidocs/bridge/bridge.models.sarvam.sarvam_provider.html) | Official Sarvam providers in NeMo — `SarvamMoEModelProvider` (30B) and `SarvamMLAModelProvider` (105B, MLA attention, `moe_router_pre_softmax: True`, expert bias) | nightly | MEDIUM |
-| 33 | [CB Insights](https://www.cbinsights.com/company/sarvam-ai) | Named a Challenger in the Voice AI developer-platform ESP; flags early friction — absent GGUF, no day-one vLLM, broken chat templates | ~Dec 2025 | MEDIUM |
+| 56 | [NVIDIA NeMo Megatron-Bridge docs](https://docs.nvidia.com/nemo/megatron-bridge/nightly/apidocs/bridge/bridge.models.sarvam.sarvam_provider.html) | Official Sarvam providers in NeMo: `SarvamMoEModelProvider` (30B) and `SarvamMLAModelProvider` (105B, MLA attention, `moe_router_pre_softmax: True`, expert bias) | nightly | MEDIUM |
+| 33 | [CB Insights](https://www.cbinsights.com/company/sarvam-ai) | Named a Challenger in the Voice AI developer-platform ESP; flags early friction: absent GGUF, no day-one vLLM, broken chat templates | ~Dec 2025 | MEDIUM |
 | 55 | [Hacker News thread](https://news.ycombinator.com/item?id=47285422) | Developer sentiment: model "not currently good", confident hallucination, no tool calling at the time | 8 Mar 2026 | MEDIUM |
-| 10 | [Sarvam API pricing](https://www.sarvam.ai/api-pricing) | 105B ₹4/₹2.5/₹16 per 1M input/cached/output tokens; 30B ₹2.5/₹1.5/₹10; Vision ₹0.50/page; STT ₹30/hr. **Page contradicts itself** — the text list says the models are "Free per token" while the table charges per token, and bonus-credit figures differ between the text block and the interactive cards | live | HIGH |
+| 10 | [Sarvam API pricing](https://www.sarvam.ai/api-pricing) | 105B ₹4/₹2.5/₹16 per 1M input/cached/output tokens; 30B ₹2.5/₹1.5/₹10; Vision ₹0.50/page; STT ₹30/hr. **Page contradicts itself**: the text list says the models are "Free per token" while the table charges per token, and bonus-credit figures differ between the text block and the interactive cards | live | HIGH |
 
 ### Academic sources for the quantization argument
 
 | # | Source | What it establishes | Confidence |
 |---|---|---|---|
-| 60 | [MoEQuant — arXiv 2505.03804](https://arxiv.org/abs/2505.03804) | ✔ ICML 2025 (poster page confirmed on the ICML site). Names inter-expert imbalance — "the uneven distribution of samples across experts" — and proposes Expert-Balanced Self-Sampling to build a calibration set with balanced expert coverage | HIGH |
+| 60 | [MoEQuant — arXiv 2505.03804](https://arxiv.org/abs/2505.03804) | ✔ ICML 2025 (poster page confirmed on the ICML site). Names inter-expert imbalance, defined as "the uneven distribution of samples across experts," and proposes Expert-Balanced Self-Sampling to build a calibration set with balanced expert coverage | HIGH |
 | 61 | [Compass-v3 — arXiv 2509.09121](https://arxiv.org/abs/2509.09121) | ✔ 245B-parameter multilingual MoE (71B active) deployed at Shopee. Naive quantization cost **Thai 10.17%** and **Vietnamese 11.75%** against BF16; their expert-aware FP8 scheme, which oversamples calibration data toward rarely-activated experts, held every language within **2.5%**, with Portuguese **1.05% above** BF16 | HIGH |
 
-**Where that analogy is weak, stated plainly:** Compass-v3 uses fewer, larger experts with FP8 activation quantization. Sarvam-30B uses 128 small experts with top-6 routing at 4-bit weight quantization. Different regime — the mechanism transfers, the magnitudes don't.
+**Where that analogy is weak, stated plainly:** Compass-v3 uses fewer, larger experts with FP8 activation quantization. Sarvam-30B uses 128 small experts with top-6 routing at 4-bit weight quantization. Different regime. The mechanism transfers, the magnitudes don't.
 
 ---
 
@@ -99,7 +99,7 @@ Primary research dates: **7–8 August 2026**. Re-verified: **16 August 2026** (
 | 24 | [NewsBytes](https://www.newsbytesapp.com/news/science/sarvam-ai-s-new-language-model-draws-muted-response-heavy-criticism/story) | Sarvam-M under 720 HF downloads in three days; Deedy Das called the performance "embarrassing"; BharatGen's Param-1 reportedly ~12 downloads | 26 May 2025 | MEDIUM |
 | 26 | [Karmick Institute](https://www.karmickinstitute.com/resources/sarvam-ais-recent-controversy-highlights-the-shortcomings-of-indias-ai-sector/) | ~334 downloads in two days; comparison against a Korean student model at ~200,000 | 26 May 2025 | MEDIUM |
 | 30 | [Teamblind thread](https://www.teamblind.com/post/indias-biggest-ai-startup-failed-embarrassingly-odscyzno) | Dismissive practitioner sentiment | — | LOW |
-| 28 | [AvidClan](https://www.avidclan.com/blog/sarvam-ai-sovereign-language-tax/) | Allegation that Sarvam-M downloads jumped from ~300/day to ~100,000/day over a weekend, prompting bot-farming accusations. **Treat with caution** — I found no corroboration and haven't repeated the allegation elsewhere in this analysis | 23 Feb 2026 | LOW |
+| 28 | [AvidClan](https://www.avidclan.com/blog/sarvam-ai-sovereign-language-tax/) | Allegation that Sarvam-M downloads jumped from ~300/day to ~100,000/day over a weekend, prompting bot-farming accusations. **Treat with caution**: I found no corroboration and haven't repeated the allegation elsewhere in this analysis | 23 Feb 2026 | LOW |
 
 ---
 
@@ -133,13 +133,13 @@ Primary research dates: **7–8 August 2026**. Re-verified: **16 August 2026** (
 
 Recording these because an absent result is still a result, and because "I couldn't find it" is different from "it doesn't exist."
 
-- **G2, Capterra, TrustRadius, Trustpilot, Product Hunt** — no Sarvam-specific review page. One G2 result that looked promising turned out to be Kore.ai. Sarvam appears in analyst matrices like CB Insights' ESP [33] but has no populated end-user review profile on the usual platforms. Checked 7 Aug 2026.
-- **Reddit** — `site:reddit.com Sarvam AI` and a LocalLLaMA-targeted query returned no substantive Sarvam threads. Developer sentiment turned up on Hacker News [55] and Teamblind [30] instead. Checked 7 Aug 2026.
-- **Stack Overflow** — nothing Sarvam-specific with usable tagged pain. Checked 7 Aug 2026.
-- **X and LinkedIn originals** — Deedy Das's "embarrassing" critique and the defences of it are reported secondhand through news [24][26]. I didn't fetch the original posts, so I've kept the attribution at the news layer rather than quoting them as if I'd read them.
-- **Headcount, revenue, ARR** — no reliable current figure for any of these. Not estimated.
-- **A defensible TAM for Indic AI** — no single market-size number I'd be willing to defend, so there isn't one in this analysis.
+- **G2, Capterra, TrustRadius, Trustpilot, Product Hunt.** No Sarvam-specific review page turned up. One G2 result that looked promising turned out to be Kore.ai. Sarvam appears in analyst matrices like CB Insights' ESP [33] but has no populated end-user review profile on the usual platforms. Checked 7 Aug 2026.
+- **Reddit.** `site:reddit.com Sarvam AI` and a LocalLLaMA-targeted query returned no substantive Sarvam threads. Developer sentiment turned up on Hacker News [55] and Teamblind [30] instead. Checked 7 Aug 2026.
+- **Stack Overflow.** Nothing Sarvam-specific with usable tagged pain. Checked 7 Aug 2026.
+- **X and LinkedIn originals.** Deedy Das's "embarrassing" critique and the defences of it are reported secondhand through news [24][26]. I didn't fetch the original posts, so I've kept the attribution at the news layer rather than quoting them as if I'd read them.
+- **Headcount, revenue, ARR.** No reliable current figure for any of these. Not estimated.
+- **A defensible TAM for Indic AI.** No single market-size number I'd be willing to defend, so there isn't one in this analysis.
 
 ## Unresolved
 
-**MoE routing mechanism.** The teardown [29] describes sigmoid routing. NVIDIA's NeMo provider [56] shows `moe_router_pre_softmax: True` with expert bias for the 105B. The 30B config and the llama.cpp implementation [57] both say sigmoid with expert bias, which resolves it for the 30B — the two sources are describing different models. I've left it flagged rather than claiming I've settled it for the whole family.
+**MoE routing mechanism.** The teardown [29] describes sigmoid routing. NVIDIA's NeMo provider [56] shows `moe_router_pre_softmax: True` with expert bias for the 105B. The 30B config and the llama.cpp implementation [57] both say sigmoid with expert bias, which resolves it for the 30B. The two sources are describing different models. I've left it flagged rather than claiming I've settled it for the whole family.

@@ -2,7 +2,7 @@
 
 An unsolicited product analysis of [Sarvam AI](https://www.sarvam.ai), written from public sources only. No affiliation with the company, no interviews, no internal data.
 
-I started with five ideas for things Sarvam could build. Three were already shipped. I got a fourth wrong — twice — and correcting it produced the only one I think is worth reading. The best surviving idea scores **63 out of 100** against a cutoff of 70 that I set before scoring. It fails. I'm publishing the working anyway, because the corrections turned out to be the most useful thing in here.
+I started with five ideas for things Sarvam could build. Three were already shipped. I got a fourth wrong (twice), and correcting it produced the only one I think is worth reading. The best surviving idea scores **63 out of 100** against a cutoff of 70 that I set before scoring. It fails. I'm publishing the working anyway, because the corrections turned out to be the most useful thing in here.
 
 **Ritik Barnwal** · ritikbarnwal028@gmail.com
 Claims last re-verified **16 August 2026**.
@@ -30,7 +30,7 @@ If you read one file, read [Corrections.md](Corrections.md). It's the shortest a
 
 Sarvam is India's best-funded sovereign-AI company: selected under the IndiaAI Mission to build the country's first from-scratch foundation model, and unicorn-valued at $1.5B on a $234M first close led by HCLTech. Its 30B and 105B are sparse mixture-of-experts models under Apache-2.0, with a tokenizer built for Indian scripts.
 
-Nearly all public criticism of those open weights traces to a cluster of March 2026 sources — no GGUF, no local runtime, no CPU path. I built ideas on that criticism, then checked each claim against the actual artifact instead of the topic. Most of it had been fixed:
+Nearly all public criticism of those open weights traces to a cluster of March 2026 sources: no GGUF, no local runtime, no CPU path. I built ideas on that criticism, then checked each claim against the actual artifact instead of the topic. Most of it had been fixed:
 
 - llama.cpp merged native `sarvam_moe` support on 9 May 2026 (PR #20275, release `b9093`)
 - Sarvam ships first-party GGUF and FP8 builds
@@ -38,7 +38,7 @@ Nearly all public criticism of those open weights traces to a cluster of March 2
 
 What's still genuinely open is narrower: **nobody has published an Indic-calibrated quantization recipe.** Ninety percent of Sarvam-30B's weights sit in 128 routed experts, six fire per token, and importance-matrix calibration only measures the experts your corpus routes to. Every public calibration corpus is English.
 
-That mechanism is documented — [MoEQuant](https://arxiv.org/abs/2505.03804) (ICML 2025) names it, and [Compass-v3](https://arxiv.org/abs/2509.09121) quantified it on a different low-resource language family, where naive quantization cost Thai 10.17% and Vietnamese 11.75% against a BF16 baseline. What nobody has done is the Indic instantiation.
+That mechanism is documented. [MoEQuant](https://arxiv.org/abs/2505.03804) (ICML 2025) names it, and [Compass-v3](https://arxiv.org/abs/2509.09121) quantified it on a different low-resource language family, where naive quantization cost Thai 10.17% and Vietnamese 11.75% against a BF16 baseline. What nobody has done is the Indic instantiation.
 
 I can't run the experiment that would settle it. [Opportunities.md](Opportunities.md) sets out what it would take and what result should kill the idea.
 
